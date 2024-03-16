@@ -10,7 +10,7 @@ import plotly.express as px
 from collections import Counter
 from nltk.corpus import stopwords
 import string
-
+import transformers
 nltk.download('punckt')
 nltk.download('stopwords')
 # Load GPT-2 tokenizer and model
