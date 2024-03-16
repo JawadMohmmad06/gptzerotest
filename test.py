@@ -15,8 +15,8 @@ import transformers
 nltk.download('punckt')
 nltk.download('stopwords')
 # Load GPT-2 tokenizer and model
-# tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
-# model = GPT2LMHeadModel.from_pretrained('gpt2')
+tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
+model = GPT2LMHeadModel.from_pretrained('gpt2')
 model_id = 'meta-llama/Llama-2-7b-chat-hf'
 hf_auth = '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'
 model_config = AutoConfig.from_pretrained(
@@ -29,15 +29,15 @@ bnb_config = transformers.BitsAndBytesConfig(
     bnb_4bit_use_double_quant = True,
     bnb_4bit_compute_dtype = bfloat16
 )
-model = AutoModelForCausalLM.from_pretrained(model_id,
-                                              config = model_config,
-                                              quantization_config = bnb_config,
-                                             device_map='auto',
-                                             torch_dtype=torch.float16,
-                                             use_auth_token=hf_auth,
-                                             )
-tokenizer = AutoTokenizer.from_pretrained(model_id,
-                                          use_auth_token=hf_auth,)
+# model = AutoModelForCausalLM.from_pretrained(model_id,
+#                                               config = model_config,
+#                                               quantization_config = bnb_config,
+#                                              device_map='auto',
+#                                              torch_dtype=torch.float16,
+#                                              use_auth_token=hf_auth,
+#                                              )
+# tokenizer = AutoTokenizer.from_pretrained(model_id,
+#                                           use_auth_token=hf_auth,)
 def calculate_perplexity(text):
     encoded_input = tokenizer.encode(text, add_special_tokens=False, return_tensors='pt')
     input_ids = encoded_input[0]
