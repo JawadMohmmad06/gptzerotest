@@ -22,7 +22,7 @@ model_config = AutoConfig.from_pretrained(
     model_id,
     use_auth_token=hf_auth
 )
-    bnb_config = transformers.BitsAndBytesConfig(
+bnb_config = transformers.BitsAndBytesConfig(
     load_in_4bit = True,
     bnb_4bit_quant_type = 'nf4',
     bnb_4bit_use_double_quant = True,
